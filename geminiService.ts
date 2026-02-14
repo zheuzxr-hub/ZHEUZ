@@ -2,10 +2,9 @@
 import { GoogleGenAI } from "@google/genai";
 import { ToolId } from "./types";
 
-// Always use the process.env.API_KEY directly as per guidelines.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const generateEduContent = async (toolId: ToolId, data: any) => {
+  // Inicialização dentro da função para garantir que o process.env.API_KEY esteja disponível no momento da chamada
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const model = 'gemini-3-flash-preview';
   
   let prompt = `Você é um assistente de produtividade para professores chamado EduFlow.
@@ -35,6 +34,8 @@ INSTRUÇÕES:
 };
 
 export const startChat = async (history: any[]) => {
+  // Inicialização dentro da função para maior robustez em ambientes de deploy (como Netlify/Vercel)
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {

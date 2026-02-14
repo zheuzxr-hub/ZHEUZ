@@ -1,0 +1,8 @@
+{
+  "name": "EduFlow AI - BNCC Productivity Tool",
+  "description": "Uma plataforma inteligente para professores e palestrantes criarem planos de aula, atividades e avaliações baseadas nas normas da BNCC.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
